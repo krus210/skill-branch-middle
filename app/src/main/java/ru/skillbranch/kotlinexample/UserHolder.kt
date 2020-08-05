@@ -18,7 +18,7 @@ object UserHolder {
     fun registerUserByPhone(fullName: String, rawPhone: String): User =
         User.makeUser(fullName, phone = rawPhone).also { user ->
             when {
-                map.contains(user.login) -> throw IllegalArgumentException("A user with this email already exists")
+                map.contains(user.login) -> throw IllegalArgumentException("A user with this phone already exists")
                 user.login.first() != '+' || user.login.length != 12 -> throw IllegalArgumentException(
                     "Enter a valid phone number starting with a + and containing 11 digits"
                 )
